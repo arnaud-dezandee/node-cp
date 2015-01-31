@@ -28,6 +28,7 @@ function _cp(options, cb) {
     // Read the source and acts accordingly to its type
     function(checks, callback) {
       fs.lstat(options.source, function(err, stats) {
+        /* istanbul ignore else  */
         if (stats.isFile()) {
           copyFile(options, callback);
         } else if (stats.isDirectory()) {
