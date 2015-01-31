@@ -1,6 +1,6 @@
 {
   "name": "node-cp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js async recursive file copy",
   "author": "Arnaud Dezandee <dezandee.arnaud@gmail.com> (https://github.com/Adezandee)",
   "license": "MIT",
