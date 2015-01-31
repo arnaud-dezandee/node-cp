@@ -6,13 +6,28 @@
 
 `cp -r` for Node.js
 
-Install with `npm install node-cp`, or just drop cp.js somewhere.
+Install with `npm install node-cp`
 
-# API
+## API
 
 `cp(source, destination, callback)`
 
-The callback will be called with an error if there is one.
+The callback will be called with an error if there is one and with an nested array of copied files names
+
+## Usage
+
+Usage of `node-cp` is simple
+
+```javascript
+var cp = require('node-cp');
+
+cp(source, destination, function (err, files) {
+ if (err) {
+   return console.error(err);
+ }
+ console.log('Copied files', files);
+});
+```
 
 # License
 

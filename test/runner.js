@@ -66,8 +66,13 @@ describe('Node.js cp -r', function() {
   });
 
   describe('Folder with files', function() {
-    before(function (cb) {
-      cp(FIXTURES_DIR + '/folder_with_files', TMP_DIR, cb);
+    it('should return an array with copied files path', function(cb) {
+      cp(FIXTURES_DIR + '/folder_with_files', TMP_DIR, function(err, files) {
+        assert.equal(path.relative(TMP_DIR, files[0]), path.basename(files[0]));
+        assert.equal(path.relative(TMP_DIR, files[1]), path.basename(files[1]));
+        assert.equal(files.length, 3);
+        cb();
+      });
     });
 
     it('should copy all first level files', function(cb) {
