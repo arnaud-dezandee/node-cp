@@ -46,8 +46,18 @@ describe('Node.js cp -r', function() {
       cp(FIXTURES_DIR + '/direct_file', TMP_DIR, cb);
     });
 
+    it('should throw an error if source do not exists', function() {
+      var source = FIXTURES_DIR + '/missing_file';
+      var destination = TMP_DIR + '/missing_file';
+      assert.throws(cp(source, destination), 'Source file do not exists!');
+    });
     it('should copy the file', function(cb) {
       assertExists(TMP_DIR + '/direct_file')(cb);
+    });
+    it('should throw an error if destination is a file', function() {
+      var source = FIXTURES_DIR + '/direct_file';
+      var destination = TMP_DIR + '/direct_file';
+      assert.throws(cp(source, destination), 'Destination is an existing file!');
     });
 
     after(function (cb) {
@@ -98,6 +108,10 @@ describe('Node.js cp -r', function() {
         assertExists(TMP_DIR + '/sub/11'),
         assertExists(TMP_DIR + '/symlink_sub/11')
       ], cb);
+    });
+    it('should not recreate the symlink if it exists', function(cb) {
+      var source = FIXTURES_DIR + '/folder_with_symlink/symlink_1';
+      cp(source, TMP_DIR, cb);
     });
 
     after(function (cb) {

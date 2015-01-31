@@ -8,15 +8,13 @@
     "type": "git",
     "url": "https://github.com/Adezandee/node-cp.git"
   },
-  "keywords": [
-    "copy"
-  ],
+  "keywords": ["copy", "cp", "recursive", "fs", "file"],
   "engine": {
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "node_modules/.bin/_mocha",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha"
+    "test": "_mocha",
+    "coverage": "istanbul cover _mocha"
   },
   "main": "cp.js",
   "dependencies": {
